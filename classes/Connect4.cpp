@@ -191,7 +191,7 @@ void Connect4::setStateString(const std::string &s) {
 //
 Player* Connect4::ownerAt(int index) const
 {
-    auto square = _grid->getSquare(index % 3, index / 3);
+    auto square = _grid->getSquare(index % 7, index / 7);
     if (!square || !square->bit()) {
         return nullptr;
     }
@@ -283,52 +283,35 @@ void Connect4::scoreMove(const char bit, int& aiPieces, int& humanPieces) {
 
 int Connect4::evalBoard(const std::string& state) {
     int score = 0;
-    for (int y = 0; y < _gameOptions.rowY - 3; y++) {
-        // start at bottom row as is a bit faster
-        for (int x = 0; x < _gameOptions.rowX - 3; x++) {
-            int aiPieces = 0;
-            int humanPieces = 0;
 
-            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
+    for (int x = 0; x < _gameOptions.rowX; x++) {
+        int index = getValidAIMoveForCol(state, x);
+        int y = index / 7;
 
-            score += scoreWindow(aiPieces, humanPieces);
-            aiPieces = 0; humanPieces = 0;
+        int aiPieces = 0;
+        int humanPieces = 0;
 
-            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y+1) * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y+2) * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y+3) * 7 + x], aiPieces, humanPieces);
+        scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+        scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
+        scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
+        scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
 
-            score += scoreWindow(aiPieces, humanPieces);
-            aiPieces = 0; humanPieces = 0;
+        score += scoreWindow(aiPieces, humanPieces);
+        aiPieces = 0; humanPieces = 0;
 
-            // TODO ADD DIAG WINDOWS (LEFT N RIGHT)
-            /*
-            for (int off = 0; off < 4; off++) {
-                // is valid window
-                if (y + 3 >= _gameOptions.rowY || x + 3 >= _gameOptions.rowX) {
-                    break;
-                }
+        scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+        scoreMove(state[(y+1) * 7 + x], aiPieces, humanPieces);
+        scoreMove(state[(y+2) * 7 + x], aiPieces, humanPieces);
+        scoreMove(state[(y+3) * 7 + x], aiPieces, humanPieces);
 
-                if (state[y * 7 + x + off] != '0') {
-                    // Logger::GetInstance().LogGameEvent("Found");
-                    state[y * 7 + x + off] == '1' ? humanPieces += 1 : aiPieces += 1;
-                }
-            }
-
-            */
-
-        }
+        score += scoreWindow(aiPieces, humanPieces);
     }
 
     return score;
 }
 
 int Connect4::getValidAIMoveForCol(const std::string& state, int col) {
-    for (int y = 6; y >= 0; y--) {
+    for (int y = 5; y >= 0; y--) {
         if (state[y * 7 + col] == '0') {
             return y * 7 + col;
         }
@@ -340,7 +323,7 @@ int Connect4::getValidAIMoveForCol(const std::string& state, int col) {
 int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int beta) {
     int score = evalBoard(state);
 
-    if (abs(score) >= 1000) {
+    if (abs(score) >= 10000) {
         Logger::GetInstance().LogGameEvent("HELP ME");
         //Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
         return score * pColor;
