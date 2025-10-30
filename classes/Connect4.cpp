@@ -1,6 +1,8 @@
 #include "Connect4.h"
 #include "Logger.h"
 
+int BIG = 10000000;
+
 Connect4::Connect4() : Game() {
     _grid = new Grid(7, 6);
     _redPieces = 0;
@@ -207,8 +209,9 @@ Player* Connect4::ownerAt(int x, int y) const
 }
 
 void Connect4::updateAI() {
-    int best = -1000;
+    int best = -BIG;
     ChessSquare* bestMove = nullptr;
+    int indexx = 0;
     std::string state = stateString();
 
     // Traverse all cells, evaluate minimax function for all empty cells
@@ -218,12 +221,13 @@ void Connect4::updateAI() {
         if (state[index] == '0') {
             // Make the move
             state[index] = '3';
-            int moveVal = -negamax(state, 1, HUMAN_PLAYER, -1000000, 1000000);
+            int moveVal = -negamax(state, 1, HUMAN_PLAYER, -BIG, BIG);
             // Undo the move
             state[index] = '0';
             // If the value of the current move is more than the best value, update best
             if (moveVal > best) {
                 bestMove = _grid->getSquareByIndex(index);
+                indexx = index;
                 best = moveVal;
             }
         }
@@ -231,7 +235,8 @@ void Connect4::updateAI() {
 
     // Make the best move
     if(bestMove) {
-        
+        std::string msgg = "Best Move: " + std::to_string(indexx) + ", Val: " + std::to_string(best);
+        Logger::GetInstance().LogGameEvent(msgg.c_str());
         if (actionForEmptyHolder(*bestMove)) {
         }
     }
@@ -284,25 +289,29 @@ void Connect4::scoreMove(const char bit, int& aiPieces, int& humanPieces) {
 int Connect4::evalBoard(const std::string& state) {
     int score = 0;
 
-    for (int x = 0; x < _gameOptions.rowX - 3; x++) {
+    for (int x = 0; x < _gameOptions.rowX ; x++) {
         for (int y = _gameOptions.rowY - 1; y >= 0; y--) {
             int aiPieces = 0;
             int humanPieces = 0;
 
-            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
-            scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
+            if (x + 3 >= 0) {
+                scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
+                scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
+                scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
 
-            score += scoreWindow(aiPieces, humanPieces);
-            aiPieces = 0; humanPieces = 0;
+                score += scoreWindow(aiPieces, humanPieces);
+                aiPieces = 0; humanPieces = 0;
+            }
 
-            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y-1) * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y-2) * 7 + x], aiPieces, humanPieces);
-            scoreMove(state[(y-3) * 7 + x], aiPieces, humanPieces);
+            if (y - 3 >= 0) {
+                scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[(y-1) * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[(y-2) * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[(y-3) * 7 + x], aiPieces, humanPieces);
 
-            score += scoreWindow(aiPieces, humanPieces);
+                score += scoreWindow(aiPieces, humanPieces);
+            }
         }
     }
 
@@ -324,7 +333,6 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
 
     if (abs(score) >= 10000) {
         Logger::GetInstance().LogGameEvent("POTENTIAL WIN");
-        Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
         return score * pColor;
     }
 
@@ -334,7 +342,7 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
         return score * pColor;
     }
 
-    int bestVal = -1000; // Min value
+    int bestVal = -BIG; // Min value
     for (int v = 0; v < _gameOptions.rowX; v++) {
         int move = getValidAIMoveForCol(state, v);
         // find empty
@@ -351,6 +359,7 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
         }
     }
 
+    Logger::GetInstance().LogGameEvent(std::to_string(bestVal).c_str());
     return bestVal;
 }
 
