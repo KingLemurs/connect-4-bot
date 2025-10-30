@@ -333,6 +333,16 @@ int Connect4::evalBoard(const std::string& state) {
     return score;
 }
 
+int Connect4::getValidAIMoveForCol(const std::string& state, int col) {
+    for (int y = 6; y >= 0; y--) {
+        if (state[y * 7 + col] == '0') {
+            return y * 7 + col;
+        }
+    }
+
+    return col;
+}
+
 int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int beta) {
     int score = evalBoard(state);
 
@@ -349,20 +359,22 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
     }
 
     int bestVal = -1000; // Min value
-    for (int i = 0; i < 42; i++) {
-            // find empty
-            if (state[i] == '0') {
-                state[i] = pColor == HUMAN_PLAYER ? '1' : '3';
-                bestVal = std::max(bestVal, -negamax(state, depth + 1, -pColor, -beta, -alpha));
-                alpha = std::max(alpha, bestVal);
+    for (int v = 0; v < 7; v++) {
+        int move = getValidAIMoveForCol(state, v);
+        Logger::GetInstance().LogGameEvent(std::to_string(move).c_str());
+        // find empty
+        if (state[move] == '0') {
+            state[move] = pColor == HUMAN_PLAYER ? '1' : '3';
+            bestVal = std::max(bestVal, -negamax(state, depth + 1, -pColor, -beta, -alpha));
+            alpha = std::max(alpha, bestVal);
 
-                state[i] = '0';
-                
-                if (alpha >= beta) {
-                    //Logger::GetInstance().LogGameEvent("PRUNE");
-                    break;
-                }
+            state[move] = '0';
+            
+            if (alpha >= beta) {
+                Logger::GetInstance().LogGameEvent("PRUNE");
+                break;
             }
+        }
     }
 
     return bestVal;

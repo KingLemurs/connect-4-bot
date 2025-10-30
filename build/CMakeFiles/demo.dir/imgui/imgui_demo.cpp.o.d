@@ -1,7 +1,7 @@
 CMakeFiles/demo.dir/imgui/imgui_demo.cpp.o: \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui_demo.cpp \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imconfig.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui_demo.cpp \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imconfig.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \

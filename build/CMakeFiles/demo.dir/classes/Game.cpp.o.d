@@ -1,6 +1,6 @@
 CMakeFiles/demo.dir/classes/Game.cpp.o: \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Game.cpp \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Game.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Game.cpp \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Game.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
@@ -938,20 +938,20 @@ CMakeFiles/demo.dir/classes/Game.cpp.o: \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/from_chars_result.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/future \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Player.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Player.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Turn.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Bit.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Sprite.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Entity.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/../imgui/imgui.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/../imgui/imconfig.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Turn.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Bit.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Sprite.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Entity.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/../imgui/imgui.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/../imgui/imconfig.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/float.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/float.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/BitHolder.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Grid.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/ChessSquare.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/../Application.h
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/BitHolder.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Grid.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/ChessSquare.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/../Application.h

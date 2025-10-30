@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/joshsgyatt/Downloads/connect-4-starter-main
+CMAKE_SOURCE_DIR = /Users/joshsgyatt/Documents/GitHub/connect-4-bot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/joshsgyatt/Downloads/connect-4-starter-main/build
+CMAKE_BINARY_DIR = /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	/Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/joshsgyatt/Downloads/connect-4-starter-main/build/CPackSourceConfig.cmake
+	/Applications/CMake.app/Contents/bin/cpack --config ./CPackSourceConfig.cmake /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -117,9 +117,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/joshsgyatt/Downloads/connect-4-starter-main/build/CMakeFiles /Users/joshsgyatt/Downloads/connect-4-starter-main/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build/CMakeFiles /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/joshsgyatt/Downloads/connect-4-starter-main/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

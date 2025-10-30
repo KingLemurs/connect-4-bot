@@ -71,7 +71,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Release"
+			"value" : "Debug"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -83,7 +83,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/joshsgyatt/Downloads/connect-4-starter-main/build"
+			"value" : "/Users/joshsgyatt/Documents/GitHub/connect-4-bot/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -187,10 +187,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/clang++"
 		},
 		{
@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/usr/bin/clang"
 		},
 		{
@@ -523,7 +523,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/joshsgyatt/Downloads/connect-4-starter-main/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/joshsgyatt/Documents/GitHub/connect-4-bot/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -595,7 +595,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/joshsgyatt/Downloads/connect-4-starter-main"
+			"value" : "/Users/joshsgyatt/Documents/GitHub/connect-4-bot"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1695,11 +1695,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : ""
+					"value" : "Path to a program."
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : ""
+			"type" : "FILEPATH",
+			"value" : "/usr/bin/git"
 		},
 		{
 			"name" : "HGCOMMAND",
@@ -1899,7 +1899,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/joshsgyatt/Downloads/connect-4-starter-main/build"
+			"value" : "/Users/joshsgyatt/Documents/GitHub/connect-4-bot/build"
 		},
 		{
 			"name" : "tictactoe_IS_TOP_LEVEL",
@@ -1923,7 +1923,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/joshsgyatt/Downloads/connect-4-starter-main"
+			"value" : "/Users/joshsgyatt/Documents/GitHub/connect-4-bot"
 		}
 	],
 	"kind" : "cache",

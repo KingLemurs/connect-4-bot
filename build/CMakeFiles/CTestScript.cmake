@@ -5,11 +5,11 @@
 cmake_minimum_required(VERSION 4.1.2)
 
 # CTest Start Step
-set(CTEST_SOURCE_DIRECTORY "/Users/joshsgyatt/Downloads/connect-4-starter-main")
-set(CTEST_BINARY_DIRECTORY "/Users/joshsgyatt/Downloads/connect-4-starter-main/build")
+set(CTEST_SOURCE_DIRECTORY "/Users/joshsgyatt/Documents/GitHub/connect-4-bot")
+set(CTEST_BINARY_DIRECTORY "/Users/joshsgyatt/Documents/GitHub/connect-4-bot/build")
 
 # CTest Update Step
-set(CTEST_UPDATE_COMMAND "")
+set(CTEST_UPDATE_COMMAND "/usr/bin/git")
 set(CTEST_UPDATE_OPTIONS "")
 set(CTEST_UPDATE_VERSION_ONLY "")
 set(CTEST_NIGHTLY_START_TIME "00:00:00 EDT")
@@ -24,7 +24,7 @@ set(CTEST_SVN_OPTIONS "")
 set(CTEST_SVN_UPDATE_OPTIONS "")
 
 # Git options
-set(CTEST_GIT_COMMAND "")
+set(CTEST_GIT_COMMAND "/usr/bin/git")
 set(CTEST_GIT_INIT_SUBMODULES "")
 set(CTEST_GIT_UPDATE_CUSTOM "")
 set(CTEST_GIT_UPDATE_OPTIONS "")

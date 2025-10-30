@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/joshsgyatt/Downloads/connect-4-starter-main
+CMAKE_SOURCE_DIR = /Users/joshsgyatt/Documents/GitHub/connect-4-bot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/joshsgyatt/Downloads/connect-4-starter-main/build
+CMAKE_BINARY_DIR = /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build
 
 # Utility rule file for ExperimentalStart.
 
@@ -85,6 +85,6 @@ CMakeFiles/ExperimentalStart.dir/clean:
 .PHONY : CMakeFiles/ExperimentalStart.dir/clean
 
 CMakeFiles/ExperimentalStart.dir/depend:
-	cd /Users/joshsgyatt/Downloads/connect-4-starter-main/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/joshsgyatt/Downloads/connect-4-starter-main /Users/joshsgyatt/Downloads/connect-4-starter-main /Users/joshsgyatt/Downloads/connect-4-starter-main/build /Users/joshsgyatt/Downloads/connect-4-starter-main/build /Users/joshsgyatt/Downloads/connect-4-starter-main/build/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/joshsgyatt/Documents/GitHub/connect-4-bot /Users/joshsgyatt/Documents/GitHub/connect-4-bot /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build /Users/joshsgyatt/Documents/GitHub/connect-4-bot/build/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/ExperimentalStart.dir/depend
 

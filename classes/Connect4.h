@@ -38,6 +38,7 @@ private:
     int         negamax(std::string& state, int depth, int playerColor, int alpha, int beta);
     int         scoreWindow(int aiPieces, int humanPieces);
     bool        isAIBoardFull(const std::string& state);
+    int         getValidAIMoveForCol(const std::string& state, int col);
     int         evalBoard(const std::string& state);
 
     // helper functions

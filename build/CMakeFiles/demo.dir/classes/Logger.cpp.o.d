@@ -1,8 +1,8 @@
 CMakeFiles/demo.dir/classes/Logger.cpp.o: \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Logger.cpp \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/Logger.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/../imgui/imgui.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/classes/../imgui/imconfig.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Logger.cpp \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/Logger.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/../imgui/imgui.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/classes/../imgui/imconfig.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \

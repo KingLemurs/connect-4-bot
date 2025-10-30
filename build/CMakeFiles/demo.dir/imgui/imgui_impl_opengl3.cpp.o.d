@@ -1,7 +1,7 @@
 CMakeFiles/demo.dir/imgui/imgui_impl_opengl3.cpp.o: \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui_impl_opengl3.cpp \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imconfig.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui_impl_opengl3.cpp \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imconfig.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -88,7 +88,7 @@ CMakeFiles/demo.dir/imgui/imgui_impl_opengl3.cpp.o: \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/malloc/_ptrcheck.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui_impl_opengl3.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui_impl_opengl3.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdio.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h \
@@ -98,7 +98,7 @@ CMakeFiles/demo.dir/imgui/imgui_impl_opengl3.cpp.o: \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_seek_set.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_ctermid.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h \
-  /Users/joshsgyatt/Downloads/connect-4-starter-main/imgui/imgui_impl_opengl3_loader.h \
+  /Users/joshsgyatt/Documents/GitHub/connect-4-bot/imgui/imgui_impl_opengl3_loader.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dlfcn.h \
   /Applications/Xcode15.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdbool.h \
   /Applications/Xcode15.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdbool.h
