@@ -16,7 +16,7 @@ void Connect4::setUpBoard() {
     setAIPlayer(YELLOW_PLAYER);
     _gameOptions.rowX = 7;
     _gameOptions.rowY = 6;
-    _gameOptions.AIMAXDepth = 1;
+    _gameOptions.AIMAXDepth = 3;
 
     // Initialize all squares
     _grid->initializeSquares(80, "square.png");
@@ -39,12 +39,11 @@ Bit* Connect4::createPiece(int pieceType) {
 }
 
 bool Connect4::actionForEmptyHolder(BitHolder &holder) {
-
-    if (holder.getPosition().y > 80) return false;
     if (holder.bit()) return false;
 
     Bit* piece = createPiece(getCurrentPlayer()->playerNumber() == 0 ? RED_PIECE : YELLOW_PIECE);
-    piece->setPosition(holder.getPosition());
+    int col = ((ChessSquare&) holder).getColumn();
+    piece->setPosition(_grid->getSquare(col, 0)->getPosition());
 
     ChessSquare* to = _grid->getSquare(((ChessSquare&) holder).getColumn(), getNextOpenRow(((ChessSquare&) holder).getColumn()));
 
@@ -219,7 +218,7 @@ void Connect4::updateAI() {
         if (state[index] == '0') {
             // Make the move
             state[index] = '3';
-            int moveVal = -negamax(state, 0, HUMAN_PLAYER, -10000, 10000);
+            int moveVal = -negamax(state, 1, HUMAN_PLAYER, -1000000, 1000000);
             // Undo the move
             state[index] = '0';
             // If the value of the current move is more than the best value, update best
@@ -232,6 +231,7 @@ void Connect4::updateAI() {
 
     // Make the best move
     if(bestMove) {
+        
         if (actionForEmptyHolder(*bestMove)) {
         }
     }
@@ -249,13 +249,13 @@ int Connect4::scoreWindow(int aiPieces, int humanPieces) {
     }
 
     if (humanPieces == 4) {
-        //Logger::GetInstance().LogGameEvent("Threat 4");
+        Logger::GetInstance().LogGameEvent("Threat 4");
         score -= 10000;
     } else if (humanPieces == 3 && aiPieces == 0) {
-        //Logger::GetInstance().LogGameEvent("Threat 3");
+        // Logger::GetInstance().LogGameEvent("Threat 3");
         score -= 100;
     } else if (humanPieces == 2 && aiPieces == 0) {
-        //Logger::GetInstance().LogGameEvent("Threat 2");
+        // Logger::GetInstance().LogGameEvent("Threat 2");
         score -= 10;
     }
 
@@ -284,61 +284,59 @@ void Connect4::scoreMove(const char bit, int& aiPieces, int& humanPieces) {
 int Connect4::evalBoard(const std::string& state) {
     int score = 0;
 
-    for (int x = 0; x < _gameOptions.rowX; x++) {
-        int index = getValidAIMoveForCol(state, x);
-        int y = index / 7;
+    for (int x = 0; x < _gameOptions.rowX - 3; x++) {
+        for (int y = _gameOptions.rowY - 1; y >= 0; y--) {
+            int aiPieces = 0;
+            int humanPieces = 0;
 
-        int aiPieces = 0;
-        int humanPieces = 0;
+            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+            scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
+            scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
+            scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
 
-        scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-        scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
-        scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
-        scoreMove(state[y * 7 + x+3], aiPieces, humanPieces);
+            score += scoreWindow(aiPieces, humanPieces);
+            aiPieces = 0; humanPieces = 0;
 
-        score += scoreWindow(aiPieces, humanPieces);
-        aiPieces = 0; humanPieces = 0;
+            scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+            scoreMove(state[(y-1) * 7 + x], aiPieces, humanPieces);
+            scoreMove(state[(y-2) * 7 + x], aiPieces, humanPieces);
+            scoreMove(state[(y-3) * 7 + x], aiPieces, humanPieces);
 
-        scoreMove(state[y * 7 + x], aiPieces, humanPieces);
-        scoreMove(state[(y+1) * 7 + x], aiPieces, humanPieces);
-        scoreMove(state[(y+2) * 7 + x], aiPieces, humanPieces);
-        scoreMove(state[(y+3) * 7 + x], aiPieces, humanPieces);
-
-        score += scoreWindow(aiPieces, humanPieces);
+            score += scoreWindow(aiPieces, humanPieces);
+        }
     }
 
     return score;
 }
 
 int Connect4::getValidAIMoveForCol(const std::string& state, int col) {
-    for (int y = 5; y >= 0; y--) {
-        if (state[y * 7 + col] == '0') {
-            return y * 7 + col;
+    for (int y = 0; y < _gameOptions.rowY; y++) {
+        if (state[y * 7 + col] != '0') {
+            return std::max((y-1), 0) * 7 + col;
         }
     }
 
-    return col;
+    return (_gameOptions.rowY - 1) * 7 + col;
 }
 
 int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int beta) {
     int score = evalBoard(state);
 
     if (abs(score) >= 10000) {
-        Logger::GetInstance().LogGameEvent("HELP ME");
-        //Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
+        Logger::GetInstance().LogGameEvent("POTENTIAL WIN");
+        Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
         return score * pColor;
     }
 
     // check draw
     if (depth >= _gameOptions.AIMAXDepth || isAIBoardFull(state)) {
-        //Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
+        // Logger::GetInstance().LogGameEvent(std::to_string(score * pColor).c_str());
         return score * pColor;
     }
 
     int bestVal = -1000; // Min value
-    for (int v = 0; v < 7; v++) {
+    for (int v = 0; v < _gameOptions.rowX; v++) {
         int move = getValidAIMoveForCol(state, v);
-        Logger::GetInstance().LogGameEvent(std::to_string(move).c_str());
         // find empty
         if (state[move] == '0') {
             state[move] = pColor == HUMAN_PLAYER ? '1' : '3';
@@ -348,7 +346,6 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
             state[move] = '0';
             
             if (alpha >= beta) {
-                Logger::GetInstance().LogGameEvent("PRUNE");
                 break;
             }
         }
