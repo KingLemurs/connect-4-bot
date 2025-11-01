@@ -139,6 +139,7 @@ void Connect4::stopGame() {
     _grid->forEachSquare([](ChessSquare* square, int x, int y) {
         square->destroyBit();
     });
+    
 }
 
 // check row 0 seperately
