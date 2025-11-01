@@ -18,7 +18,7 @@ void Connect4::setUpBoard() {
     setAIPlayer(YELLOW_PLAYER);
     _gameOptions.rowX = 7;
     _gameOptions.rowY = 6;
-    _gameOptions.AIMAXDepth = 3;
+    _gameOptions.AIMAXDepth = 5;
 
     // Initialize all squares
     _grid->initializeSquares(80, "square.png");
@@ -220,8 +220,8 @@ void Connect4::updateAI() {
         int index = getValidAIMoveForCol(state, row);
         if (state[index] == '0') {
             // Make the move
-            state[index] = '3';
-            int moveVal = -negamax(state, 1, HUMAN_PLAYER, -BIG, BIG);
+            state[index] = getCurrentPlayer()->playerNumber() == RED_PLAYER ? '1' : '3';
+            int moveVal = -negamax(state, 1, getCurrentPlayer()->playerNumber() == RED_PLAYER ? 1 : -1, -BIG, BIG);
             // Undo the move
             state[index] = '0';
             // If the value of the current move is more than the best value, update best
@@ -294,7 +294,7 @@ int Connect4::evalBoard(const std::string& state) {
             int aiPieces = 0;
             int humanPieces = 0;
 
-            if (x + 3 >= 0) {
+            if (x + 3 < _gameOptions.rowX) {
                 scoreMove(state[y * 7 + x], aiPieces, humanPieces);
                 scoreMove(state[y * 7 + x+1], aiPieces, humanPieces);
                 scoreMove(state[y * 7 + x+2], aiPieces, humanPieces);
@@ -309,6 +309,26 @@ int Connect4::evalBoard(const std::string& state) {
                 scoreMove(state[(y-1) * 7 + x], aiPieces, humanPieces);
                 scoreMove(state[(y-2) * 7 + x], aiPieces, humanPieces);
                 scoreMove(state[(y-3) * 7 + x], aiPieces, humanPieces);
+
+                score += scoreWindow(aiPieces, humanPieces);
+                aiPieces = 0; humanPieces = 0;
+            }
+
+            if (x + 3 < _gameOptions.rowX && y - 3 >= 0) {
+                scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[(y-1) * 7 + x+1], aiPieces, humanPieces);
+                scoreMove(state[(y-2) * 7 + x+2], aiPieces, humanPieces);
+                scoreMove(state[(y-3) * 7 + x+3], aiPieces, humanPieces);
+
+                score += scoreWindow(aiPieces, humanPieces);
+                aiPieces = 0; humanPieces = 0;
+            }
+
+            if (x + 3 < _gameOptions.rowX && y + 3 < _gameOptions.rowY) {
+                scoreMove(state[y * 7 + x], aiPieces, humanPieces);
+                scoreMove(state[(y+1) * 7 + x+1], aiPieces, humanPieces);
+                scoreMove(state[(y+2) * 7 + x+2], aiPieces, humanPieces);
+                scoreMove(state[(y+3) * 7 + x+3], aiPieces, humanPieces);
 
                 score += scoreWindow(aiPieces, humanPieces);
             }
@@ -359,7 +379,7 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
         }
     }
 
-    Logger::GetInstance().LogGameEvent(std::to_string(bestVal).c_str());
+    // Logger::GetInstance().LogGameEvent(std::to_string(bestVal).c_str());
     return bestVal;
 }
 

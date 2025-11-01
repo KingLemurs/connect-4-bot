@@ -32,7 +32,7 @@ private:
     static const int YELLOW_PLAYER = 1;
 
     Bit*        createPiece(int pieceType);
-    Bit *       PieceForPlayer(const int playerNumber);
+    Bit*        PieceForPlayer(const int playerNumber);
     Player*     ownerAt(int index ) const;
     Player*     ownerAt(int x, int y ) const;
     int         negamax(std::string& state, int depth, int playerColor, int alpha, int beta);
