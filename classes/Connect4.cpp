@@ -66,12 +66,6 @@ Player* Connect4::checkForWinner() {
             if (!first) {
                 continue;
             }
-            
-            /*
-            if (first == ownerAt(y+1,x)) Logger::GetInstance().LogGameEvent("two");
-            if (first == ownerAt(y+2,x)) Logger::GetInstance().LogGameEvent("three");
-            if (first == ownerAt(y+3,x)) Logger::GetInstance().LogGameEvent("four??");
-            */
 
             if (first == ownerAt(y-1,x) && 
                 first == ownerAt(y-2,x) &&
@@ -363,9 +357,10 @@ int Connect4::negamax(std::string& state, int depth, int pColor, int alpha, int 
         return score * pColor;
     }
 
+    int array[] = { 3,2,4,1,5,0,6 };
     int bestVal = -BIG; // Min value
     for (int v = 0; v < _gameOptions.rowX; v++) {
-        int move = getValidAIMoveForCol(state, v);
+        int move = getValidAIMoveForCol(state, array[v]);
         // find empty
         if (state[move] == '0') {
             state[move] = pColor == HUMAN_PLAYER ? '1' : '3';
